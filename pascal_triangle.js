@@ -13,7 +13,7 @@
 // Explanation: The output matrix has the first four rows of Pascal’s Triangle. 
 
 // We always need to take the col with 0 indexing approach
-// hence the ans will always devide by col and multiply by (row - col)
+// hence the ans will always divide by col and multiply by (row - col)
 
 // Solution
 const generateRows = function(row) {

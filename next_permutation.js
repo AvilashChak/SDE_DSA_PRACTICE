@@ -25,6 +25,17 @@
 // Input: nums = [1,1,5]
 // Output: [1,5,1]
 
+// Aprroach
+// Identify the Breakpoint: The first step is to find the "dip" in the array, where a number at index i is smaller than the number at i + 1. This "dip" marks the breakpoint, separating the left (i) and right (i + 1) parts.
+
+// Start from the End: To find this breakpoint efficiently, iterate from the second-to-last element (index n - 2) towards the beginning, as this ensures we locate the rightmost dip first.
+
+// Handle No Breakpoint (Highest Permutation): Initialize a variable index to -1. If no dip is found (i.e., the array is already the highest permutation), reverse the entire array to get the smallest permutation.
+
+// Swap with the Smallest Larger Element: Once the breakpoint is identified, locate the smallest number greater than nums[index] in the right portion. Swap these two numbers to ensure the next permutation is slightly larger.
+
+// Reverse the Right Portion: Finally, reverse the portion of the array after the breakpoint (index + 1 to the end) to obtain the next lexicographical permutation. This ensures the smallest possible arrangement of numbers in that part.
+
 // Solution
 const nextPermutation = function(nums) {
     let index = -1;
