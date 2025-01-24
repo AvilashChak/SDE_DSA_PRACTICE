@@ -56,4 +56,53 @@ let m = 3;
 let arr2 = [2,5,6];
 let n = 3;
 merge(arr1, m, arr2, n);
-console.log(arr1);
+//console.log(arr1);
+
+const swapIfGreater = function(arr1, arr2, ind1, ind2) {
+    if(arr1[ind1] > arr2[ind2]) {
+        [arr1[ind1], arr2[ind2]] = [arr2[ind2], arr1[ind1]];
+    }
+}
+
+// Using gap method
+const mergeGap = function(arr1, m, arr2, n) {
+    let len = (m + n);
+    let gap = Math.ceil(len / 2);
+    while(gap > 0) {
+        let left = 0;
+        let right = left + gap;
+        while(right < len) {
+            // I am in arr1 and arr2
+            if(left < m && right >= m) {
+                swapIfGreater(arr1, arr2, left, right - m);
+            } 
+            // I am in arr2 and arr2
+            else if(left >= m) {
+                swapIfGreater(arr2, arr2, left - m, right - m);
+            } 
+            // I am in arr1 and arr1
+            else {
+                swapIfGreater(arr1, arr1, left, right);
+            }
+            left++;
+            right++;
+        }
+        if(gap === 1) {
+            break;
+        } else {
+            gap = Math.ceil(gap / 2);
+        }
+    }
+    // Copying remaining elements of arr2 to arr1
+    for (let i = 0; i < n; i++) {
+        arr1[m + i] = arr2[i];
+    }
+};
+
+const ar1 = [1, 3, 5, 7];
+const ar2 = [0, 2, 6, 8, 9];
+let m1 = 4;
+let n2 = 5;
+mergeGap(ar1, m1, ar2, n2);
+console.log("res:", JSON.stringify(ar1));
+console.log("resL:", ar1.length);
