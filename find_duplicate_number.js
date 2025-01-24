@@ -1,4 +1,4 @@
-// Find the Duplicate Number
+// Find the duplicate in an array of N+1 integers
 
 // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 // There is only one repeated number in nums, return this repeated number.
