@@ -94,5 +94,3 @@ const majorityElement = function(arr) {
 
 const me = majorityElement(nums);
 console.log("Majority Element is: ", me);
-
-
