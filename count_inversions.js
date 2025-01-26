@@ -35,7 +35,7 @@ const nums = [5,4,2,4,1];
 const result = bfCountInversion(nums);
 console.log("Bf Result is: ", result);
 
-// Optimal 
+// Optimal - TC - O(n log n) and SC - O(n)
 // We need to use Merge sort algo to get the count.
 const merge = function(arr, low, mid, high) {
     let left = low;
