@@ -76,7 +76,7 @@ const bsres = bsSearchMatrix(arr, tar);
 console.log("bsres: ", bsres);
 
 // Approach
-// Optimal -
+// Optimal - TC - O(log2 (n*m) and SC - O(1)
 // Hypothetically we need to flaten the 2d matrix into 1d. 
 // Convert the 1D cordinate to 2D cordinate. Once we convert it then we can do binary search and get our target.
 // Formula : row - ind/col , col = ind % col.
