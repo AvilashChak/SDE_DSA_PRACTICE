@@ -40,7 +40,7 @@ const arr1 =  [1,3,2,3,1];
 const bfResult = bfReversePairs(arr1);
 console.log("BF result: ", bfResult);
 
-// Optimal
+// Optimal - TC - (2n log n) and SC - O(n)
 // We will use merge sort algo. And need to add one more function countPairs().
 const merge = function(arr, low, mid, high) {
     let n = arr.length;
