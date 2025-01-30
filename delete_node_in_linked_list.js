@@ -32,7 +32,34 @@ class Node {
     }
 }
 
+const printList = function(head) {
+    let result = [];
+    while(head !== null) {
+        result.push(head.val);
+        //console.log(head.val + " ");
+        head = head.next;
+    }
+    console.log(result.join(" -> "));
+};
+
 const deleteNode = function(node) {
     node.val = node.next.val;
     node.next = node.next.next;
+    
 };
+
+let head = new Node(4);
+head.next = new Node(5);
+head.next.next = new Node(1);
+head.next.next.next = new Node(9);
+
+// Printing the original list
+console.log("Original List:");
+printList(head);
+
+// Deleting node with value 5 (passing the reference)
+deleteNode(head.next);
+
+// Printing the modified list
+console.log("List after deleting node with value 5:");
+printList(head);
