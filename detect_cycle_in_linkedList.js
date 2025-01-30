@@ -70,7 +70,7 @@ if (detectLoop(head)) {
 
 const detectCycle = function(head) {
     if(head === null || head.next === null) {
-        return null;
+        return false;
     }
 
     let fast = head;
