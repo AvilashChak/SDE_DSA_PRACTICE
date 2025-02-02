@@ -8,7 +8,7 @@
 // Input: nums = [1,0,1,1,0,1]
 // Output: 2
 
-// Approach
+// Approach - TC - O(N) and SC - O(1)
 // It's straight forward. We will take a var max = 0. And return it.
 const maxConsecutive = function(arr) {
     let n = arr.length;
