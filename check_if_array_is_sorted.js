@@ -17,7 +17,7 @@
 // Explanation: [1,2,3] is the original sorted array.
 // You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
 
-// Approach - TC - and SC -
+// Approach - TC - O(N) and SC - O(1)
 // We need to traverse the arr and need to check if arr[1] <= arr[0].
 
 // Solution
