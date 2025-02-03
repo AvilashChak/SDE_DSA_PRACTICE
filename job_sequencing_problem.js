@@ -54,7 +54,7 @@ const jobSequencing = function(id, deadline, profit) {
     }
    }
 
-   return {count, maxProfit};
+   return [count, maxProfit];
 
 };
 
