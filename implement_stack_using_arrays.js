@@ -21,7 +21,7 @@
 // Output: -1, 5
 
 
-// TC - and SC - 
+// TC - O(1) and SC - O(1)
 // Solution
 class Stack {
     constructor() {
