@@ -39,7 +39,7 @@
 // We call the left child first as we want to traverse the left most nodes. In cases where there is no left child, the recursion function backtracks and explores the right child.
 // Step 3: The recursion continues until it reaches the base case. Return the result vector at the end.
 
-// TC - O(N) and SC - O(1)
+// TC - O(N) and SC - O(H)
 
 class TreeNode {
     constructor(val, left = null, right = null) {
