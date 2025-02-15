@@ -29,7 +29,7 @@
 
 
 // Solution
-// TC -  and SC - 
+// TC - O(N) and SC - O(N)
 
 class TreeNode {
     constructor(val, left = null, right = null) {
