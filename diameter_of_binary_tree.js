@@ -35,21 +35,21 @@ class Node {
     }
 }
 
-const bfCalculateHeight = function(node, diameter) {
+const calculateHeight = function(node, diameter) {
     // base case
     if(!node) return 0;
 
-    const lh = bfCalculateHeight(node.left, diameter);
-    const rh = bfCalculateHeight(node.right, diameter);
+    const lh = calculateHeight(node.left, diameter);
+    const rh = calculateHeight(node.right, diameter);
 
     diameter.max = Math.max(diameter.max, lh + rh);
 
     return 1 + Math.max(lh, rh);
 };
 
-const bfFindDiameter = function(node) {
+const findDiameter = function(node) {
     let diameter = {max: 0}; // use an object to track max diameter
-    bfCalculateHeight(node, diameter);
+    calculateHeight(node, diameter);
     return diameter.max;
 }
 
@@ -61,4 +61,4 @@ root.left.right = new Node(5);
 root.left.right.right = new Node(6);
 root.left.right.right.right = new Node(7);
 
-console.log("BF diameter of binary tree:", bfFindDiameter(root));
+console.log("Diameter of binary tree:", findDiameter(root));
