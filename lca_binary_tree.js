@@ -41,7 +41,7 @@
 
 
 // Solution
-// TC - and SC - 
+// TC - O(N) and SC - O(N)
 
 class Node {
     constructor(val, left = null, right = null) {
