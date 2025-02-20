@@ -64,24 +64,24 @@ const numIslands = function(grid) {
 const bfs = function(row, col, visited, grid) {
     let n = grid.length;
     let m = grid[0].length;
-    visited[row][col] = 1;
+    visited[row][col] = true;
     let q = [];
     q.push([row, col]);
+
+    let directions = [[-1, 0], [0, 1], [1, 0], [0, -1]];
 
     while(q.length > 0) {
         let [row, col] = q.shift();
 
         // traverse the neighbours and mark them if it's a land
-        for(let delrow = -1; delrow <= 1; delrow++) {
-            for(let delcol = -1; delcol <= 1; delcol++) {
-                let nrow = row + delrow;
-                let ncol = col + delcol;
+        for(let [delrow, delcol] of directions) {
+            let nrow = row + delrow;
+            let ncol = col + delcol;
 
-                if(nrow > 0 && nrow < n && ncol > 0 && ncol < m &&
-                    !visited[nrow][ncol] && grid[nrow][ncol] === '1') {
-                        visited[nrow][ncol] = 1;
-                        q.push([nrow, ncol]);
-                }
+            if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m &&
+                !visited[nrow][ncol] && grid[nrow][ncol] === '1') {
+                    visited[nrow][ncol] = 1;
+                    q.push([nrow, ncol]);
             }
         }
     }
