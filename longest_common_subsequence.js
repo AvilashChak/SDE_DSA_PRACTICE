@@ -191,7 +191,7 @@ const lcs = function(text1, text2) {
     for(let i = 1; i <= n; i++) {
         for(let j = 1; j <= m; j++) {
             // if it's a match
-            if(text1[i] === text2[j]) {
+            if(text1[i - 1] === text2[j - 1]) {
                 curr[j] = 1 + prev[j - 1];
             } 
             else {
