@@ -196,7 +196,7 @@ const lcs = function(text1, text2) {
             } 
             else {
                 // not a match
-                curr[j] = Math.max(prev[j], curr[i - 1]);
+                curr[j] = Math.max(prev[j], curr[j - 1]);
             }
         }
         // Move curr to prev for the next iteration
