@@ -37,45 +37,139 @@
 
 
 // Solution
-const maxSubArray = function(nums) {
-    if(nums.length === 0) {
-        return {
-            maxSum: 0,
-            subArray: []
-        };
+// const maxSubArray = function(nums) {
+//     if(nums.length === 0) {
+//         return {
+//             maxSum: 0,
+//             subArray: []
+//         };
+//     }
+
+//     let maxSum = nums[0];
+//     let currentSum = nums[0];
+
+//     let start = 0;
+//     let end = 0;
+//     let tempStart = 0;
+
+//     for(let i = 1; i < nums.length; i++) {
+//         if(currentSum + nums[i] > nums[i]) {
+//             currentSum += nums[i];
+//         } else {
+//             currentSum = nums[i];
+//             tempStart = i;
+//         }
+
+//         if(currentSum > maxSum) {
+//             maxSum = currentSum;
+//             start = tempStart;
+//             end = i;
+//         }
+//     }
+
+//     return {
+//         maxSum: maxSum,
+//         subArray: nums.slice(start, end + 1)
+//     };
+// };
+
+
+// BF approach (naive approach)
+// TC -  and SC -
+
+const maxSubArrayBf = function(arr) {
+    let n = arr.length;
+    if(n === 0) return 0;
+
+    let maxi = Number.MIN_SAFE_INTEGER;
+
+    for(let i = 0; i < n; i++) {
+        for(let j = i; j < n; j++) {
+            // subarr i to j
+            let sum = 0;
+
+            // add all elements of subarray
+            for(let k = i; k <= j; k++) {
+                sum = sum + arr[k];
+            }
+
+            maxi = Math.max(maxi, sum);
+        }
     }
 
-    let maxSum = nums[0];
-    let currentSum = nums[0];
+    return maxi;
 
-    let start = 0;
-    let end = 0;
-    let tempStart = 0;
-
-    for(let i = 1; i < nums.length; i++) {
-        if(currentSum + nums[i] > nums[i]) {
-            currentSum += nums[i];
-        } else {
-            currentSum = nums[i];
-            tempStart = i;
-        }
-
-        if(currentSum > maxSum) {
-            maxSum = currentSum;
-            start = tempStart;
-            end = i;
-        }
-    }
-
-    return {
-        maxSum: maxSum,
-        subArray: nums.slice(start, end + 1)
-    };
 };
 
 
-const arr = [-2,1,-3,4,-1,2,1,-5,4];
-const result = maxSubArray(arr);
-console.log(result);
-console.log("MaxSum: ", result.maxSum);
-console.log("MaxSum SubArray", result.subArray);
+// Better approach
+// TC - O(n^2) and SC - O(1)
+
+const maxSubArrayBetter = function(arr) {
+    let n = arr.length;
+    if(n === 0) return 0;
+
+    let maxi = Number.MIN_SAFE_INTEGER;
+
+    for(let i = 0; i < n; i++) {
+        let sum = 0;
+        for(let j = i; j < n; j++) {
+            sum = sum + arr[j];
+            maxi = Math.max(maxi, sum);
+        }
+
+    }
+
+    return maxi;
+};
+
+// Optimal Solution
+// TC - O(n) and SC - O(1)
+
+const maxSubArray = function(arr) {
+    let n = arr.length;
+    if(n === 0) return 0;
+
+    let maxi = Number.MIN_SAFE_INTEGER;
+    let sum = 0;
+
+    let start = 0;
+    let ansStart = -1, ansEnd = -1;
+
+    for(let i = 0; i < n; i++) {
+        if(sum === 0) {
+            start = i;
+        }
+
+        sum = sum + arr[i];
+
+        if(sum > maxi) {
+            maxi = sum;
+
+            ansStart = start;
+            ansEnd = i;
+        }
+
+        // if sum is 0 or -ve discard the sum calculated
+        if(sum < 0) {
+            sum = 0;
+        }
+
+        // printing the subarr
+    }
+    console.log("The sub array is:", arr.slice(ansStart, ansEnd + 1));
+    return maxi;
+};
+
+
+// const arr = [-2,1,-3,4,-1,2,1,-5,4];
+// const result = maxSubArray(arr);
+// console.log(result);
+// console.log("MaxSum: ", result.maxSum);
+// console.log("MaxSum SubArray", result.subArray);
+// console.log("---------");
+
+const arr1 = [-2,1,-3,4,-1,2,1,-5,4];
+console.log("MaxSum SubArray using BF", maxSubArrayBf(arr1));
+console.log("MaxSum SubArray using Better approach", maxSubArrayBetter(arr1));
+console.log("MaxSum SubArray using Optimal approach", maxSubArray(arr1));
