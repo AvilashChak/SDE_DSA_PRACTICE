@@ -51,6 +51,56 @@ const setZeroes = function(matrix) {
     return matrix;
 };
 
+// Optimal Approach - for constant space
+// TC - O(m * n)  and SC - O(1)
+
+const zeroMatrix = function(matrix) {
+    let row = matrix.length;
+    let col = matrix[0].length;
+
+    let col0 = 1; // Flag to track if the first column should be zeroed
+
+    // Step 1: Traverse the matrix and mark the first row and column accordingly
+    for (let i = 0; i < row; i++) {
+        if (matrix[i][0] === 0) col0 = 0; // Track if the first column needs to be zeroed
+        
+        for (let j = 1; j < col; j++) { // Start from j = 1 to avoid marking col0 incorrectly
+            if (matrix[i][j] === 0) {
+                matrix[i][0] = 0; // Mark row
+                matrix[0][j] = 0; // Mark column
+            }
+        }
+    }
+
+    // Step 2: Zero out cells based on markers (from bottom-right to top-left, skipping first row & col)
+    for (let i = row - 1; i > 0; i--) {
+        for (let j = col - 1; j > 0; j--) {
+            if (matrix[i][0] === 0 || matrix[0][j] === 0) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+    // Step 3: Zero out the first row if needed
+    if (matrix[0][0] === 0) {
+        for (let j = 0; j < col; j++) {
+            matrix[0][j] = 0;
+        }
+    }
+
+    // Step 4: Zero out the first column if needed
+    if (col0 === 0) {
+        for (let i = 0; i < row; i++) {
+            matrix[i][0] = 0;
+        }
+    }
+
+    return matrix;
+};
+
+
 const mat = [[1,1,1],[1,0,1],[1,1,1]];
+const mat1 = [[1,1,1],[1,0,1],[1,1,1]];
 const result = setZeroes(mat);
 console.log("result is: " , result);
+console.log("Using optimal approach:", zeroMatrix(mat1));
