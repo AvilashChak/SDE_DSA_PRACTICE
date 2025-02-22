@@ -16,6 +16,7 @@
 // hence the ans will always divide by col and multiply by (row - col)
 
 // Solution
+// TC - O(n^2) and SC - O(1)
 const generateRows = function(row) {
     let ans = 1;
     let ansRow = [];
