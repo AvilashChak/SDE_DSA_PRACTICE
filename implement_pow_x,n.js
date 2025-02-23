@@ -17,6 +17,26 @@
 // BF - TC - O(n) and SC - O(1).
 // Looping from 1 to n. We will keep a variable ans and everytime we loop we multiply the ans with x. And if the value of x is negative which means 1/x to the power n.
 
+// using bf
+// TC - O(n) and SC - O(1) 
+var myPower = function(x, n) {
+    let ans = 1;
+    
+    if (n > 0) {
+        for(let i = 0; i < n; i++) {
+            ans = ans * x;
+        
+        }
+    }
+    else {
+        for(let i = 0; i > n; i--) {
+            ans = ans/x; // Instead of multiplying, divide for negative exponent
+        }
+    }
+
+    return ans;
+};
+
 // Optimal - TC - O(log base 2 n) and SC - 0(1)
 
 // Solution
@@ -40,3 +60,4 @@ const myPow = function(x, n) {
 const x = 2.00000, n = -2;
 const result = myPow(x, n);
 console.log("Output is: ", result);
+console.log("Output using BF is: ", myPower(x, n));
