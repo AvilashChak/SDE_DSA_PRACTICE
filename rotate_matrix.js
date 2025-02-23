@@ -20,6 +20,30 @@
 // [0][2] -> [2][2]
 // so from the above we can observe j is swaping it's place and how the i is constant when changed the second is constant too. so from here we can say that (n - 1) - i. 
 // so in this approach we need to run two loops i and j. which will have more time and space complexity
+
+// Solution
+// TC - O(n^2) and SC - O(n)
+
+var rotateMatrix = function(matrix) {
+    let n = matrix.length;
+    let rotated = Array.from({ length: n }, () => Array(n).fill(0));
+
+    for(let i = 0; i < n; i++) {
+        for(let j = 0; j < n; j++) {
+            rotated[j][n - i - 1] = matrix[i][j];
+        }
+    }
+
+    for(let i = 0; i < n; i++) {
+        for(let j = 0; j < n; j++) {
+            matrix[i][j] = rotated[i][j]
+        }
+    }
+
+    return matrix;
+};
+
+
 // the optimal approach will be 
 // first we need to transpose(col becomes row, row becomes col) and then we need to reverse
 // after transpose the diagonal will be same and below are the indexes that we observe
@@ -31,9 +55,10 @@
 // i+1   n-1
 
 // Solution 
+// TC - O(n^2) and SC - O(1)
 const rotate = function(matrix) {
     let n = matrix.length;
-    for(let i = 0; i < n - 1; i++) {
+    for(let i = 0; i < n; i++) {
         for(let j = i + 1; j < n; j++) {
             [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
         }
@@ -44,5 +69,8 @@ const rotate = function(matrix) {
 };
 
 const mat = [[1,2,3],[4,5,6],[7,8,9]];
+const mat1 = [[1,2,3],[4,5,6],[7,8,9]];
+console.log("Using BF:", rotateMatrix(mat1));
+console.log();
 const result = rotate(mat);
 console.log(mat);
