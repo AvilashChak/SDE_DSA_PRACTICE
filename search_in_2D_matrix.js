@@ -50,7 +50,7 @@ const bs = function(matrix, target) {
 
     while(low <= high) {
         if(matrix[mid] === target) {
-            return mid;
+            return true;
         }
         else if(matrix[mid] < target) {
             low = mid + 1;
@@ -59,14 +59,14 @@ const bs = function(matrix, target) {
             high = mid - 1;
         }
     }
-    return -1;
+    return false;
 };
 
 const bsSearchMatrix = function(matrix, target) {
     let row = matrix.length;
     let col = matrix[0].length;
-    for(let i = 0; i < row - 1; i++) {
-        if(matrix[i][0] <= target && target <= arr[i][col-1]) {
+    for(let i = 0; i < row; i++) {
+        if(matrix[i][0] <= target && target <= matrix[i][col-1]) {
             return bs(matrix[i], target);
         }
     }
