@@ -19,7 +19,7 @@
 // 1. If the sum of two elements = target return yes or no ie true or false if not.
 // 2. The other is return the indexes of the elements which sum is equal to the target.
 
-// Bf - TC O(n) and SC O(1)
+// Bf - TC O(n^2) and SC O(1)
 const bfTwoSum = function(nums, target) {
     let n = nums.length;
     for(let i = 0; i < n; i++) {
@@ -61,12 +61,13 @@ const hashTwoSum = function(nums, target) {
 
 console.log("Hashing:", hashTwoSum(arr, tar));
 
-// Optimal -
+// Optimal - TC - O(N) + O(N*logN) and SC - O(1)
 // We will use 2 pointer. We will use greedy approach. We will keep a left pointer at 0 and right pointer at n - 1. And then we will check and see if we get our target.
 
 const twoSum = function(nums, target) {
     let n = nums.length;
     let left = 0, right = n - 1;
+    nums.sort((a, b) => a - b);
     while(left < right) {
         let sum = nums[left] + nums[right];
         if(sum === target) {
@@ -79,3 +80,23 @@ const twoSum = function(nums, target) {
 }; 
 
 console.log("Two Sum: ", twoSum(arr, tar));
+
+// Optimal Solution - using hashMap (if we are required to return the indices)
+// TC - O(n) and SC - O(n)
+
+const twoSumUsingHashMap = function(nums, target) {
+    let n = nums.length;
+    let map = new Map();
+
+    for(let i = 0; i < n; i++) {
+        let complement = target - nums[i];
+
+        if(map.has(complement)) {
+            return [map.get(complement), i];
+        }
+        map.set(nums[i], i);
+    }
+    return [];
+};
+
+console.log("Two Sum using hashMap (if we are required to return the indices): ", twoSumUsingHashMap(arr, tar));
