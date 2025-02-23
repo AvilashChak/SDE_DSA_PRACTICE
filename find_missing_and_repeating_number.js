@@ -18,7 +18,7 @@
 // Then I will see if a number is appearing 2 times then it will be my repeating number and if the number is appearing 0 times it is my missing number.
 
 // Solution
-// BF ---> TC - O(n) and SC - O(1)
+// BF ---> TC - O(n^2) and SC - O(1)
 const repeatedAndMissingNumber = function(arr) {
     const n = arr.length;
     let missing = -1, repeating = -1;
