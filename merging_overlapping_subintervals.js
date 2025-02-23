@@ -16,16 +16,18 @@
 // Approach 
 // BF solution will be that, that we first need to sort the given array. We need to see which subintervals are overlapping and need to merge them.
 
-// Optimal approach would be that we do it in single iteration
 
 // Solution by BF
+// TC - O(n log n) + O(2n) and SC - O(n)
 const mergeByBf = function(intervals) {
     let n = intervals.length;
-    intervals.sort((a, b) => a - b);
+    intervals.sort((a, b) => a[0] - b[0]);
     let ans = [];
     for(let i = 0; i < n; i++) {
         let start = intervals[i][0];
         let end = intervals[i][1];
+        
+        // skip all the merged intervals
         if(ans.length > 0 && end <= ans[ans.length - 1][1]) {
             continue;
         }
@@ -36,7 +38,7 @@ const mergeByBf = function(intervals) {
                 break;
             }
         }
-
+        
         ans.push([start, end]);
     }
     return ans;
@@ -45,6 +47,10 @@ const mergeByBf = function(intervals) {
 const arr = [[1,3],[2,6],[8,10],[15,18]];
 const result = mergeByBf(arr);
 console.log(result);
+
+// Optimal approach would be that we do it in single iteration
+// Solution
+// TC - O(n log n) + O(n) and SC - O(n)
 
 const merge = function(intervals) {
     let n = intervals.length;
