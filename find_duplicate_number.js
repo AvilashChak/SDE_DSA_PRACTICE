@@ -18,14 +18,73 @@
 // Output: 3
 
 // Approach
-// The brute force to solve this problem is by first sorting the given array. After sorting we can see that when we traverse the array by linear approach there will be one point where i == i + 1. then there we can say that that is our duplicate array. This will take the time complexity of O(n log n) and take extra space of O(1) and this will distort the array.
-// Better - Then to optimize  we will create an frequency array of simillar size and initialize all with 0. So now we will update the frequecy array index by 1 with from the actual array. For say the 1st element of the array is 2 then we will update the 2nd index of the frequency array by 1. So by doing this process there will be a point when we will find the duplicate element as that element's index will already be updated by 1. Time and space complexity will be O(n) and O(n).
-//  0,1,2,3,4,5,6,7,8,9 -----> index  
-// [2,5,9,6,9,3,8,9,7,1]
-// Optimal - The optimal approach is to use Linked List Cycle method. So we will start from 2 and we will go to the 2nd index and write down the element i.e 9. if we continue the pattern/cycle we will reach to a point when we colide with 9. 
-// So after creating this cycle we will use the tortoise method. Here we take 2 pointers one is the slow pointer and the fast pointer. the slow pointer always moves 1 step and the fast moves 2 steps ahead. So after continuing this pattern we will reach to a stage where both the pointers colide with each other and stops moving. And then we need to take the fast pointer and place it in the first number and after that we will not follow the tortoise method. We will move both the pointers with 1 step and then we will get the point where they colide and say that, that element is our duplicate number. TC O(n) SC O(n). We are not actually creating the cycle and travesering the given array to move the slow and fast pointers.
+
+// Brute Force Approach
+
+// Using sorting
+
+// TC - O(n log n) + O(n) and SC - O(n) 
+var findDuplicate = function(nums) {
+    let n = nums.length;
+    nums.sort((a, b) => a - b);
+
+    for(let i = 0; i < n; i++) {
+        if(nums[i] === nums[i + 1]) {
+            return nums[i];
+        }
+    }
+};
+
+const nums1 = [2,5,9,6,9,3,8,9,7,1];
+console.log("BF approach:", findDuplicate(nums1));
+
+
+// Better - Approach
+
+// Approach to Finding the Duplicate Number (Using a Set)
+// Since we need to find the duplicate number without modifying the array and using a simple method, we can use a Hash Set to track seen numbers.
+
+// Steps to Solve the Problem
+// Initialize an empty Set to keep track of numbers we have already seen.
+// Iterate through the array:
+// If a number is already present in the set, return it immediately (this is the duplicate).
+// Otherwise, add the number to the set.
+// If no duplicate is found, return null (this is just a safeguard, though the problem guarantees a duplicate).
+
+
+
 
 // Solution
+// BF - TC - O(n) and SC - O(n)
+
+const duplicate = function(arr) {
+    let n = arr.length;
+
+    let set = new Set();
+
+    for(let i = 0; i < n; i++) {
+        if(set.has(arr[i])) {
+            return arr[i]; // return the first duplicate found
+        }
+        set.add(arr[i]);
+    }
+    return null; // if no duplicates are found
+};
+
+const nums = [2,5,9,6,9,3,8,9,7,1];
+console.log("Better approach:", duplicate(nums));
+
+
+
+// Optimal Approach
+
+// The optimal approach is to use Linked List Cycle method. So we will start from 2 and we will go to the 2nd index and write down the element i.e 9. if we continue the pattern/cycle we will reach to a point when we colide with 9. 
+// So after creating this cycle we will use the tortoise method. Here we take 2 pointers one is the slow pointer and the fast pointer. the slow pointer always moves 1 step and the fast moves 2 steps ahead. So after continuing this pattern we will reach to a stage where both the pointers colide with each other and stops moving. And then we need to take the fast pointer and place it in the first number and after that we will not follow the tortoise method. We will move both the pointers with 1 step and then we will get the point where they colide and say that, that element is our duplicate number. TC O(n) SC O(n). We are not actually creating the cycle and travesering the given array to move the slow and fast pointers.
+
+
+
+// Solution
+// TC - O(n) and SC - O(1)
 const findDuplicates = function(arr) {
     let slow = arr[0];
     let fast = arr[0];
