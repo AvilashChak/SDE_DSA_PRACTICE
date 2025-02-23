@@ -81,7 +81,7 @@ const findTheNumbers = function(arr) {
     // S - SN ---> x - y
     // S2 -S2N ---> x2 - y2
     let SN  = (n * (n + 1)) / 2;
-    let S2N = ((n * (n + 1)) * (2 * n + 1)) / n;
+    let S2N = (n * (n + 1) * (2 * n + 1)) / 6;
     let S = 0, S2 = 0;
     for(let i = 0; i < n; i++) {
         S += arr[i];
@@ -98,5 +98,6 @@ const findTheNumbers = function(arr) {
 
 }; 
 
-const FindTheNumbers = findTheNumbers(nums);
+const nums1 = [2,2];
+const FindTheNumbers = findTheNumbers(nums1);
 console.log("Find the Numbers: ", FindTheNumbers);
