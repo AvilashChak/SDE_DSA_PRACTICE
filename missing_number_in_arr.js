@@ -21,11 +21,11 @@
 // Brute - TC - O(N * N) and SC - O(1)
 // In this appraoch we will do linear search and see if the number exists between our 0 to n.
 const bfMissingNumber = function(arr) {
-    let n = arr.length;
-    for(let i = 1; i <= n; i++) {
+    let n = arr.length + 1;
+    for(let i = 0; i <= n; i++) {
         let flag = 0;
-        for(let j = 0; j < n - 1; j++) {
-            if(arr[j] === arr[i]) {
+        for(let j = 0; j < n; j++) {
+            if(arr[j] === i) {
                 flag = 1;
                 break;
             }
