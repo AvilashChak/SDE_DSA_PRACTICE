@@ -25,7 +25,7 @@ const maxMeetings = function(start, end) {
     }
 
     // sort meetings by end time and then by start time if in case end times are the same
-    meetings.sort((a , b) => a[1] === b[1] ? a[0] -a[0] : a[1] - b[1]);
+    meetings.sort((a , b) => a[1] === b[1] ? a[0] -b[0] : a[1] - b[1]);
 
     let selectedMeetings = [];
     let freeTime = 0;
