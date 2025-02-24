@@ -19,8 +19,8 @@
 // We will first sort both the arrays. And then use two pointers l and r and place it to the 0th index of the arrays. And then we will compare and return maxChildren.
 
 const assignCookies = function(g, s) {
-    let n = g.length;
-    let m = s.length;
+    let m = g.length;
+    let n = s.length;
     let l = 0, r = 0;
 
     // sort the arrays
@@ -28,13 +28,13 @@ const assignCookies = function(g, s) {
     s.sort((a, b) => a - b);
 
     while(l < m && r < n) { // Ensure both indices stay in bounds
-        if(g[r] <= s[l]) { // Match child greed with cookie size
-            r++; // Move to the next child
+        if(g[l] <= s[r]) { // Match child greed with cookie size
+            l++; // Move to the next child
         }
-        l++; // Always move to the next cookie
+        r++; // Always move to the next cookie
     }
 
-    return r;
+    return l;
 };
 
 console.log("Ans is: ", assignCookies([1,2], [1,2,3]));
