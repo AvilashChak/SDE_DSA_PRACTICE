@@ -17,6 +17,7 @@
 // Explanation: 2 and 3, none of them divide 23 evenly.
 
 // Solution
+// TC - O(log₁₀(n)) and SC - O(1)
 const evenlyDivides = function(n) {
     let count = 0;
     let temp = n; // preserve the original value of n
