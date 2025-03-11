@@ -43,8 +43,78 @@ function print1(n) {
     print1(n - 1);
 };
 
+// Solution - Optimal - linearly 1 to N
+// TC - O(N) and SC - O(N)
+
+const printGfg2 = function(n) {
+    print2(1, n);
+};
+
+function print2(count, n) {
+    if(count > n) {
+        return;
+    }
+    process.stdout.write(`${count}:GFG `);
+    print2(count + 1, n);
+};
+
+// Solution - Optimal - linearly to N to 1
+// TC - O(N) and SC - O(N)
+
+const printGfg3 = function(n) {
+    print3(n, 1);
+};
+
+function print3(count, n) {
+    if(count < 1) {
+        return;
+    }
+    process.stdout.write(`${count}:GFG `);
+    print3(count - 1, n);
+};
+
+// Solution - Optimal - print 1 to N using Backtrack
+// TC - O(N) and SC - O(N)
+
+const printGfg4 = function(n) {
+    print4(n, n);
+};
+
+function print4(i, n) {
+    if(i < 1) return;
+
+    print4(i - 1, n);
+    process.stdout.write(`${i}:GFG `);
+};
+
+// Solution - Optimal - print N to 1 using Backtrack
+// TC - O(N) and SC - O(N)
+
+const printGfg5 = function(n) {
+    print5(1, n);
+};
+
+function print5(i, n) {
+    if(i > n) return;
+
+    print5(i + 1, n);
+    process.stdout.write(`${i}:GFG `);
+};
+
 
 console.log("BF:")
 printGfg(5);
 console.log();
 printGfg1(5);
+console.log();
+console.log("\nOptimal: 1 to N");
+printGfg2(5);
+console.log();
+console.log("\nOptimal: N to 1");
+printGfg3(5);
+console.log();
+console.log("\nOptimal: 1 to N using Backtrack");
+printGfg4(5);
+console.log();
+console.log("\nOptimal: N to 1 using Backtrack");
+printGfg5(5);
