@@ -66,7 +66,40 @@ const cntFrq = function(arr) {
     return res;
 };
 
+// Find the highest and lowest frequency
+// Solution
+// Approach - Hashing using arr
+// TC - O(n + n) = O(2n) = O(n) and SC - O(n)
+
+const frq = function(arr) {
+    let n = arr.length;
+    let hashArr = new Array(n).fill(0);
+
+    for(let i = 0; i < n; i++) {
+        let el = arr[i];
+        if(el >= 1 && el <= n) {
+            hashArr[el - 1]++;
+        }
+    }
+
+    let highest = hashArr[0];
+    let lowest = hashArr[0];
+
+    for(let freq of hashArr) {
+        if(freq > highest) {
+            highest = freq;
+        }
+        if(freq < lowest) {
+            lowest = freq;
+        }
+    }
+
+    return {hashArr, highest, lowest};
+};
+
 
 const arr = [2, 3, 2, 3, 5];
+const arr1 = [2, 3, 2, 3, 5, 2];
 console.log("Frequency is(arr):", countFrq(arr));
 console.log("Frequency is(map):", cntFrq(arr));
+console.log("Frequency highest and lowest:", frq(arr1));
