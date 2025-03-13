@@ -18,7 +18,7 @@
 // 1 ≤ arr[i] ≤ arr.size()
 
 // Solution
-// Approach - Hashing
+// Approach - Hashing using arr
 // TC - O(n + n) = O(2n) = O(n) and SC - O(n)
 
 const countFrq = function(arr) {
@@ -35,5 +35,38 @@ const countFrq = function(arr) {
     return hashArr;
 };
 
+// Solution
+// Approach - Hashing using map
+// TC - O(n) and SC - O(n) + O(n)
+
+const cntFrq = function(arr) {
+    let n = arr.length;
+    let map = new Map();
+
+    // Initialize counts to 0 for each number from 1 to n
+    for(let i = 0; i < n; i++) {
+        map.set(i, 0);
+    }
+
+    // Count occurrences
+    for(let i = 0; i < n; i++) {
+        let el = arr[i];
+        if(el >= 1 && el <= n) {
+            map.set(el - 1, map.get(el - 1) + 1);
+        }
+    }
+
+    //return map;
+
+    // Convert map values to an array
+    let res = [];
+    for(let [key, val] of map) {
+        res.push(val);
+    }
+    return res;
+};
+
+
 const arr = [2, 3, 2, 3, 5];
-console.log("Frequency is:", countFrq(arr));
+console.log("Frequency is(arr):", countFrq(arr));
+console.log("Frequency is(map):", cntFrq(arr));
