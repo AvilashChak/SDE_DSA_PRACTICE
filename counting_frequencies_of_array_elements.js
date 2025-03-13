@@ -85,6 +85,7 @@ const frq = function(arr) {
     let highest = hashArr[0];
     let lowest = hashArr[0];
 
+    // if we need to return the freq
     for(let freq of hashArr) {
         if(freq > highest) {
             highest = freq;
@@ -93,6 +94,16 @@ const frq = function(arr) {
             lowest = freq;
         }
     }
+
+    // if we need to return the index
+    // for(let i = 0; i < hashArr.length; i++) {
+    //     if(hashArr[i] > highest) {
+    //         highest = i;
+    //     }
+    //     if(hashArr[i] < lowest) {
+    //         lowest = i;
+    //     }
+    // }
 
     return {hashArr, highest, lowest};
 };
