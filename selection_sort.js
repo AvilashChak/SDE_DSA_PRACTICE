@@ -14,6 +14,9 @@
 // 1 ≤ arr.size() ≤ 103
 // 1 ≤ arr[i] ≤ 106
 
+// Approach
+// Selection Sort - Select minimums
+
 // Solution
 // TC - O(n^2) and SC - O(1)
 
