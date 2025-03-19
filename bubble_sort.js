@@ -60,10 +60,32 @@ const bubble = function(arr) {
     return arr;
 };
 
+// Solution - Using Recursion: Recursive Bubble Sort
+// TC - O(n^2) for worst and average cases and O(n) for best case and SC - O(1) + O(n) auxilary recursive stack space
+
+const bubbleSortRecursive = function(arr, n) {
+    // base case
+    if(n === 1) return;
+    let didSwap = 0;
+    for(let i = 0; i <= n - 2; i++) {
+        if(arr[i] > arr[i + 1]) {
+            // swap
+            [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+            didSwap = 1;
+        }
+    }
+    if(didSwap === 0) return arr;
+    // range reduced after recursion
+    bubbleSortRecursive(arr, n - 1); 
+    return arr;
+};
+
 const arr = [4, 1, 3, 9, 7];
+const n = 5;
 const arr1 = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 const arr2 = [1, 2, 3, 4, 5]
 
 console.log("Bubble sort (worst and average case):", bubbleSort(arr));
 console.log("Bubble sort optimized (best case):", bubble(arr1));
 console.log("Bubble sort optimized (best case):", bubble(arr2));
+console.log("Recursive Bubble sort:", bubbleSortRecursive(arr, n));
