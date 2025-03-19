@@ -20,7 +20,7 @@
 // Insertion Sort - Takes an element and places it in it's correct order
 
 // Solution
-// TC -  and SC -
+// TC - O(n^2) for worst and average cases and O(n) for best case (if arr is sorted) and SC - O(1) + O(n) auxilary recursive stack space
 
 const insertionSort = function(arr) {
     let n = arr.length;
@@ -38,9 +38,27 @@ const insertionSort = function(arr) {
     return arr;
 };
 
+// Solution - Using Recursion: Recursive Insertion Sort
+// TC - O(n^2) for worst and average cases and O(n) for best case and SC - O(1) + O(n) auxilary recursive stack space
+
+const insertionSortRecursive = function(arr, i, n) {
+    // base case
+    if(i === n) return;
+    let j = i;
+    while(j > 0 && arr[j - 1] > arr[j]) {
+        // swap
+        [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+        j--;
+    }
+    insertionSortRecursive(arr, i + 1, n);
+    return arr;
+};
+
 const arr1 = [4, 1, 3, 9, 7];
 const arr2 = [1, 2, 3, 4, 5];
 
 console.log("Insertion Sort:", insertionSort(arr1));
 console.log();
 console.log("Insertion Sort:", insertionSort(arr2));
+console.log();
+console.log("Recursive Insertion Sort:", insertionSortRecursive(arr1, 0, 5));
