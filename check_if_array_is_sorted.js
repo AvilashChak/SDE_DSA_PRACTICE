@@ -34,5 +34,19 @@ const sorted = function(arr) {
     return true;
 };
 
+// Solution
+const sortedAndRotated = function(arr) {
+    let n = arr.length;
+    let count = 0;
+    for(let i = 0; i < n; i++) {
+        if(arr[i] > arr[(i + 1) % n]) {
+            count++;
+        }
+    }
+    return count <= 1;
+}
+
 const nums = [3,4,5,1,2];
+const nums1 = [2,1,3,4];
 console.log("Is sorted? ", sorted(nums));
+console.log("Is sorted and rotated? ", sortedAndRotated(nums1));
