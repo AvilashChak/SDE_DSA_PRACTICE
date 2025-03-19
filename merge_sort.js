@@ -12,6 +12,7 @@
 // Output: [1, 2, 3]
 
 // Solution
+// TC - O(n log n) and SC - O(n)
 const merge = function(arr, low, mid, high) {
     let left = low;
     let right = mid + 1;
